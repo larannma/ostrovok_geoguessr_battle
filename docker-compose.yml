@@ -2,7 +2,7 @@ app:
   build: .
   command: python -u app.py
   ports:
-    - "5001:5001"
+    - "8000:8000"
   volumes:
     - .:/app
   links:
@@ -11,10 +11,8 @@ db:
   image: mongo:latest
   hostname: test_mongodb
   environment:
-    - MONGO_INITDB_DATABASE=animal_db
+    - MONGO_INITDB_DATABASE=ostrovok_db
     - MONGO_INITDB_ROOT_USERNAME=root
     - MONGO_INITDB_ROOT_PASSWORD=pass
-  volumes:
-    - ./init-db.js:/docker-entrypoint-initdb.d/init-db.js:ro
   ports:
     - 27017:27017
