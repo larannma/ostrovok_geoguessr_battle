@@ -24,10 +24,10 @@ class User:
 
 def get_db():
     client = MongoClient(
-                        host='test_mongodb',
+                        host='mongodb_ostrovok',
                         port=27017, 
                         username='root', 
-                        password='pass',
+                        password='example',
                         authSource="admin")
     db = client["ostrovok_db"]
     return db
@@ -55,6 +55,7 @@ def create_user():
 # GET ALL USERS
 @app.route('/users', methods=['GET'])
 def get_all_users():
+    print('getting users')
     db = get_db()
     users = db.users.find()
     user_list = []
