@@ -1,133 +1,71 @@
 from telegram import ForceReply, Update, InlineKeyboardButton, KeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove
 from telegram.ext import CallbackContext, Application, CommandHandler, ContextTypes, MessageHandler, filters, CallbackQueryHandler, ConversationHandler
 from telegram.constants import ParseMode
+import requests
 import json
 import os
+import ostrovok_api as ostrovok
+
+QUESTION_INDEX = 0
 
 TOKEN = "6608411270:AAHY6BEDs5rsBSR93WBN5j_lNdUMPqasbV0"
 CHAT_IDS_FILE = 'chat_ids.json'
 
 # Define states
-AGREE, ASK_NAME, ASK_COMPANY, ASK_POSITION, ASK_EMAIL, CHOOSE_GAME, FAVORITE_LANGUAGE, START_QUIZ, COMMON_QUESTION_1, COMMON_QUESTION_2, COMMON_QUESTION_3, PYTHON_QUIZ, GOLANG_QUIZ = range(13)
+AGREE, ASK_NAME, ASK_COMPANY, ASK_POSITION, ASK_EMAIL, CHOOSE_GAME, FAVORITE_LANGUAGE, START_QUIZ, COMMON_QUESTION_1, COMMON_QUESTION_2, COMMON_QUESTION_3, PYTHON_QUIZ, GOLANG_QUIZ, PYTHON_Q3, GOLANG_Q3 = range(15)
 
-PERSONAL_DATA = "Если вы нажимаете продолжить, то вы соглашаетесь с условиями хранения данных"
+PERSONAL_DATA = "Если вы нажимаете 'Я согласен', то вы соглашаетесь с [условиями хранения данных](https://ostrovok.ru/?sid=3cbff5a0-53dc-4453-b6c7-dbcd88870dfe)"
 
-intro = 'Привет, о великий повелитель кода. Язык программирования выбран, он поможет пройти квест и получить подарок. Островок отправляет тебя в путешествие за мерчом. Но где находится этот Мерчленд?'
+intro = 'О, привет! Язык программирования выбран, он поможет пройти квест и получить подарок. Островок отправляет тебя в путешествие за мерчом. Но где находится этот Мерчленд?'
 
 final_answer = '''Ты настоящий герой! Подойди на стенд компании Островок и забери свой подарок. Покажи менеджеру свой результат. Тебе еще возвращаться домой, с мерчом это делать намного приятнее)'''
 
 common_questions = [
-    ("Чтобы понять в какое полушарие тебя закинет, нужно решить первую задачу: Орел - южное полушарие, Решка - северное полушарие. Ты подкинул монетку 50 раз и судьба явно намекнула тебе. Какая сторона выпадала чаще, если Решка выпала чаще Орла на (x-5)^2.", ["Северное (Решка)", "Южное (Орел)"]),
-    "Ты обожаешь работать, поэтому не можешь отправиться в Южное полушарие без заявления на отпуск. HR советует указать в бланке конкретную дату. С датами у тебя не очень, кроме своего др ничего не помнишь. Разгадай шифр Цезаря со сдвигом 7 и узнай дату",
-    ("Всё готово к полету в Мерчлэнд! На календаре 1 апреля, чемодан в руках. Таможеннику на границе кажется подозрительным, что ты летишь с единорогом. Он хочет убедиться в твоей адекватности и подсовывает логическую задачку. Найди последовательность с наибольшей суммой чисел:", ["44", "17", "23", "67"])
+    ("Чтобы понять в какое полушарие тебя закинет, нужно решить первую задачу: Орел - южное полушарие, Решка - северное полушарие. Ты подкинул монетку 50 раз и судьба явно намекнула тебе. Какая сторона выпадала чаще, если Решка выпала чаще Орла на (x-5)^2.", ["Северное (Решка)", "Южное (Орел)"], './images/Задача1.jpg'),
+    ("Ты обожаешь работать, поэтому не можешь отправиться в Южное полушарие без заявления на отпуск. HR советует указать в бланке конкретную дату. С датами у тебя не очень, кроме своего др ничего не помнишь. Разгадай шифр Цезаря со сдвигом 7 и узнай дату\n\nШифр: `mpyzavmhwyps`",["01.04", "05.08", "21.01", "11.11"],'./images/Задача2.jpg'),
+    ("Всё готово к полету в Мерчлэнд! На календаре 1 апреля, чемодан в руках. Таможеннику на границе кажется подозрительным, что ты летишь с единорогом. Он хочет убедиться в твоей адекватности и подсовывает логическую задачку. Начиная с вершины треугольника, двигайся построчно вниз по смежным числам. Найди максимальную сумму чисел", ["44", "17", "23", "67"], './images/Задача3.jpg')
+]
+
+common_answers = [
+    "Южное (Орел)",
+    "01.04",
+    "23"
 ]
 
 python_questions = [
-    ('''За правильный ответ тебя пропустили. Задремав в самолете, ты видишь во сне блокнотики и ручки, свитшоты и кружки, футболки и пакеты с логотипами. Мерчлэнд всё ближе! А ты уже идешь получать багаж, узнай номер багажной ленты.```python\nx = 0
-a = 5
-b = 5
-if a > 0:
-    if b < 0:
-        x = x + 5
-    elif a > 5:
-        x = x + 4
-    else:
-        x = x + 3
-else:
-    x = x + 2
-print(x)\n```''', ["0", "4", "3", "2"]),
-    ('''Все бывшие не заслуживали столько усилий, сколько вложено в прохождение этого испытания. Получается, мерч Островка лучше любых отношений. Скоро вы встретитесь! Местный аэроэкспресс уже ждет на перроне, но на каком?```python\nclass A:
-    def my_password(self):
-        print("1234")
+    ('''За правильный ответ тебя пропустили. Задремав в самолете, ты видишь во сне блокнотики и ручки, свитшоты и кружки, футболки и пакеты с логотипами. Мерчлэнд всё ближе! А ты уже идешь получать багаж, узнай номер багажной ленты.''', ["0", "4", "3", "2"], './images/Задача4_Python.jpg'),
+    ('''Все бывшие не заслуживали столько усилий, сколько вложено в прохождение этого испытания. Получается, мерч Островка лучше любых отношений. Скоро вы встретитесь! Местный аэроэкспресс уже ждет на перроне, но на каком?''', ["1234", "5678", "0000", "8765"], './images/Задача5_Python.jpg'),
+    ('''На мониторе, где должен быть QR-код с подключением к Wi-Fi появилась ошибка. Рядом стоят сотрудники и чешут затылки. Помоги им разобраться, что это за ошибка. (одно ключевое слово, о чём эта ошибка)''', ["скобки", "braces", "parens", "parenthesis"], './images/Задача6_Python.jpg'),
+    ('''Ты на месте. Осталось разгадать последний код, чтобы открыть ворота в Мерчленд.''', ["saintostrovok", "ostrovoksaint", "highload", "sainthighload"], './images/Задача7_Python.jpg')
+]
 
-class B(A):
-    def my_password(self):
-        print("5678")
+python_answers = [
+    "3",
+    "5678",
+    "скобки, скобочки, brac, braces, parens, parenthesis, brackets",
+    "ostrovoksaint"
+]
 
-class C(A):
-    def my_password(self):
-        print("0000")
-
-class D(B, C):
-    pass
-
-d = D()
-d.my_password()
-\n```''', ["1234", "5678", "0000", "8765"]),
-    ('''Поезд прибыл только ночью, пришлось менять колесо в пути.  Вызвать такси не удается, твой интернет не работает, пытаешься подключиться к wi-fi, но пароль подсказать некому. Угадать пароль — проще простого! ```python\nx = {'a': 1, 'b': 2}\nSyntaxError: not a chance\n```''', ["скобки", "braces", "parens", "parenthesis"]),
-    ('''Ты на месте. Осталось разгадать последний код, чтобы открыть ворота в Мерчленд.```python\na = {'saint', 'high', 'load'}
-b = {'high', 'load', 'ostrovok'}
-x = list(a^b)
-print(sorted(x))\n```''', ["saintostrovok", "ostrovoksaint", "highload", "sainthighload"])
+go_answers = [
+    "3",
+    "5678",
+    "body, defer, close, дефер после ошибки",
+    "sainthighload"
 ]
 
 golang_questions = [
-    ('''За правильный ответ тебя пропустили. Задремав в самолете, ты видишь во сне блокнотики и ручки, свитшоты и кружки, футболки и пакеты с логотипами. Мерчлэнд всё ближе! А ты уже идешь получать багаж, узнай номер багажной ленты.```go\npackage main
-
-import "fmt"
-
-func fun() bool {
-	return false
-}
-
-func main() {
-	switch fun(); {
-	case true:
-		fmt.Println(3)
-	case false:
-		fmt.Println(5)
-       default:
-		fmt.Println(0)
-	}
-}
-```''', ["11", "10", "12", "13"]),
-    ('''Все бывшие не заслуживали столько усилий, сколько вложено в прохождение этого испытания. Получается, мерч Островка лучше любых отношений. Скоро вы встретитесь! Местный аэроэкспресс уже ждет на перроне, но на каком?```go\npackage main
-import "fmt"
-var password string = "1234"
-func init() {
-        password = "0000"
-}
-func init() {
-        password = "5678"
-}
-func main() {
-        fmt.Println(password)\n```''', ["1234", "0000", "5678", "8765"]),
-    ('''Поезд прибыл только ночью, пришлось менять колесо в пути.  Вызвать такси не удается, твой интернет не работает, пытаешься подключиться к wi-fi, но пароль подсказать некому. Угадать пароль — проще простого! ```go\nfunc main() {  
-    resp, err := http.Get("https://example.org")
-    defer resp.Body.Close()
-    if err != nil {
-        fmt.Println(err)
-        return
-    }
-
-    body, err := ioutil.ReadAll(resp.Body)
-    // ...
-}
-
-// panic: runtime error: invalid memory address or nil pointer dereference
-\n```''', ["body", "defer", "close", "дефер после ошибки"]),
-    ('''Ты на месте. Осталось разгадать последний код, чтобы открыть ворота в Мерчленд.```go\npackage main
-
-import (
-"fmt"
-"strings"
-)
-
-func main() {
-	src := []string{"saint", "high", "load"}
-	dst := []string{"ostrovok"}
-	copy(dst, src)
-	fmt.Println(strings.Join(dst, ""))
-}
-\n```''', ["sainthighload", "saint", "ostrovok", "saintostrovok"])
+    ('''За правильный ответ тебя пропустили. Задремав в самолете, ты видишь во сне блокнотики и ручки, свитшоты и кружки, футболки и пакеты с логотипами. Мерчлэнд всё ближе! А ты уже идешь получать багаж, узнай номер багажной ленты.''', ["3", "5", "0", "1"], './images/Задача4_Go.jpg'),
+    ('''Все бывшие не заслуживали столько усилий, сколько вложено в прохождение этого испытания. Получается, мерч Островка лучше любых отношений. Скоро вы встретитесь! Местный аэроэкспресс уже ждет на перроне, но на каком?''', ["1234", "0000", "5678", "8765"], './images/Задача5_Go.jpg'),
+    ('''На мониторе, где должен быть QR-код с подключением к Wi-Fi появилась ошибка. Рядом стоят сотрудники и чешут затылки. Помоги им разобраться, что это за ошибка. (одно ключевое слово, о чём эта ошибка)''', ["body", "defer", "close", "дефер после ошибки"], './images/Задача6_Go.jpg'),
+    ('''Ты на месте. Осталось разгадать последний код, чтобы открыть ворота в Мерчленд.''', ["sainthighload", "saint", "ostrovok", "saintostrovok"], './images/Задача7_Go.jpg')
 ]
 
 def get_question_and_options(language, question_index):
     if language == 'python':
-        question, options = python_questions[question_index]
+        question, options, image = python_questions[question_index]
     elif language == 'golang':
-        question, options = golang_questions[question_index]
-    return question, options
+        question, options, image = golang_questions[question_index]
+    return question, options, image
 
 def load_chat_ids():
     if os.path.exists(CHAT_IDS_FILE):
@@ -155,77 +93,140 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
 
-    await update.message.reply_text(PERSONAL_DATA, reply_markup=reply_markup)
+    await update.message.reply_text(PERSONAL_DATA, reply_markup=reply_markup, parse_mode=ParseMode.MARKDOWN)
     
     return AGREE
 
 async def agreement(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     query = update.callback_query
+    user_id = update.effective_user.id
+    username = update.effective_user.username
+    chat_id = query.message.chat.id
     await query.answer()
+    await update.callback_query.edit_message_reply_markup(None)
     if query.data == "agree":
-        await query.edit_message_text(text="Спасибо за ваше согласие.", reply_markup=None)
+        try:
+            res = ostrovok.create_user(user_id, username, chat_id)
+            print(res)
+            print('|  User has been created   |')
+        except:
+            print("Error creating a user")
+        await context.bot.send_message(chat_id, text='✈️')
         await context.bot.send_photo(
-            chat_id=query.message.chat_id,
-            photo='./images/greetings.png',
+            chat_id,
+            photo='./images/Привет.jpg',
             caption="Твое имя"
         )
         return ASK_NAME
     else:
         keyboard = [
-            [
-                InlineKeyboardButton("Я согласен", callback_data="agree"),
-                InlineKeyboardButton("Не согласен", callback_data="disagree"),
+        [
+            InlineKeyboardButton("Я согласен", callback_data="agree"),
+            InlineKeyboardButton("Не согласен", callback_data="disagree"),
             ],
         ]
 
         reply_markup = InlineKeyboardMarkup(keyboard)
-        await update.callback_query.edit_message_reply_markup(None)
         await query.message.reply_text(PERSONAL_DATA, reply_markup=reply_markup)
         return AGREE
 
 async def ask_name(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     context.user_data['name'] = update.message.text
+    user_id = update.effective_user.id
+    try:
+        ostrovok.set_name(user_id, context.user_data['name'])
+    except:
+        print("Error setting user's name")
     await update.message.reply_text("Название компании")
     return ASK_COMPANY
 
 async def ask_company(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     context.user_data['company'] = update.message.text
+    query = update.callback_query
+    # await query.answer()
+    # chat_id = query.message.chat.id
+    user_id = update.effective_user.id
+    try:
+        # ostrovok.set_company(chat_id, context.user_data['company'])
+        pass
+    except:
+        print("Error setting user's company")
     await update.message.reply_text("Твоя должность")
     return ASK_POSITION
 
 async def ask_position(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     context.user_data['position'] = update.message.text
+
+    user_id = update.effective_user.id
+    try:
+        ostrovok.set_job_title(user_id, context.user_data['position'])
+    except:
+        print("Error setting user's job title")
     await update.message.reply_text("Твой email")
     return ASK_EMAIL
 
 async def ask_email(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     context.user_data['email'] = update.message.text
+    user_id = update.effective_user.id
+    try:
+        ostrovok.set_email(user_id, context.user_data['email'])
+    except:
+        print("Error setting user's email")
+
     keyboard = [
-        [InlineKeyboardButton("Командная игра Геогессер", callback_data='geoguessr')],
-        [InlineKeyboardButton("Задачки", callback_data='puzzles')]
+        [InlineKeyboardButton("Python", callback_data='python')],
+        [InlineKeyboardButton("Go", callback_data='golang')]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
-    await update.message.reply_text("Выбери в какую игру ты будешь играть", reply_markup=reply_markup)
-    return CHOOSE_GAME
+    await update.message.reply_text("Выберите язык, на котором бы хотели пройти испытания", reply_markup=reply_markup)
+    return FAVORITE_LANGUAGE
+    # keyboard = [
+    #     [InlineKeyboardButton("Командная игра Геогессер", callback_data='geoguessr')],
+    #     [InlineKeyboardButton("Задачки", callback_data='puzzles')]
+    # ]
+    # reply_markup = InlineKeyboardMarkup(keyboard)
+    # await update.message.reply_text("Выбери в какую игру ты будешь играть", reply_markup=reply_markup)
+    # return CHOOSE_GAME
 
 async def choose_game(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     query = update.callback_query
     await query.answer()
     game_choice = query.data
-
+    chat_id = query.message.chat.id
+    user_id = update.effective_user.id
+    code = ''
+    
     if game_choice == 'geoguessr':
-        await query.edit_message_text("Ты выбрал командную игру Геогессер. Твой ключ AKJLWFH")
+        try:
+            responce = requests.get(f"http://heyyouhere.space:1566/get_code?id={user_id}")
+            ans = responce.json()
+            code = ans['code']
+            await query.edit_message_text(f"Твой ключ `{code}`", parse_mode=ParseMode.MARKDOWN)
+        except:
+            print("error in creating geoguessr code")
         # logic for the GeoGuessr game
-        return ConversationHandler.END
+        keyboard = [
+            [InlineKeyboardButton("Пройти квиз", callback_data='puzzles')],
+        ]
+        # await update.callback_query.edit_message_reply_markup(None)
+        reply_markup = InlineKeyboardMarkup(keyboard)
+        await query.message.reply_text("Отлично, теперь ты можешь пройти турнир по geoguessr, а также пройти квиз", reply_markup=reply_markup)
+
+        return CHOOSE_GAME
     elif game_choice == 'puzzles':
         await query.edit_message_text("Вы выбрали Задачки.")
-        keyboard = [
-            [InlineKeyboardButton("Python", callback_data='python')],
-            [InlineKeyboardButton("Golang", callback_data='golang')]
-        ]
-        reply_markup = InlineKeyboardMarkup(keyboard)
-        await query.message.reply_text("Выберите язык, на котором бы хотели пройти квиз", reply_markup=reply_markup)
-        return FAVORITE_LANGUAGE
+        context.user_data['question_index'] = 0  # Initialize question index
+        # await update.callback_query.edit_message_reply_markup(None)
+        await query.message.reply_text(intro, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Далее", callback_data="start_quiz")]]))
+
+        return START_QUIZ
+        # keyboard = [
+        #     [InlineKeyboardButton("Python", callback_data='python')],
+        #     [InlineKeyboardButton("Go", callback_data='golang')]
+        # ]
+        # reply_markup = InlineKeyboardMarkup(keyboard)
+        # await query.message.reply_text("Выберите язык, на котором бы хотели пройти квиз", reply_markup=reply_markup)
+        # return FAVORITE_LANGUAGE
 
     return FAVORITE_LANGUAGE
 
@@ -234,92 +235,321 @@ async def favorite_language(update: Update, context: CallbackContext) -> int:
     await query.answer()
     favorite_language = query.data
     context.user_data['favorite_language'] = favorite_language
-    context.user_data['question_index'] = 0  # Initialize question index
+    await update.callback_query.edit_message_reply_markup(None)
+    user_id = update.effective_user.id
+    try:
+        ostrovok.set_favorite_language(user_id, favorite_language)
+    except:
+        print("Error setting user's favorite language")
+    keyboard = [
+        [InlineKeyboardButton("Командная игра Геогессер", callback_data='geoguessr')],
+        [InlineKeyboardButton("Задачки", callback_data='puzzles')]
+    ]
+    reply_markup = InlineKeyboardMarkup(keyboard)
+    await query.message.reply_text("Выбери в какую игру ты будешь играть", reply_markup=reply_markup)
+    return CHOOSE_GAME
+    # context.user_data['question_index'] = 0  # Initialize question index
+    # await update.callback_query.edit_message_reply_markup(None)
+    # await query.message.reply_text(intro, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Далее", callback_data="start_quiz")]]))
 
-    await query.message.reply_text(intro, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Далее", callback_data="start_quiz")]]))
-
-    return START_QUIZ
+    # return START_QUIZ
 
 async def start_quiz(update: Update, context: CallbackContext) -> int:
     query = update.callback_query
+    chat_id = query.message.chat.id
     await query.answer()
-
-    question, options = common_questions[0]
+    await update.callback_query.edit_message_reply_markup(None)
+    question, options, image = common_questions[0]
     keyboard = [[InlineKeyboardButton(option, callback_data=option) for option in options]]
     reply_markup = InlineKeyboardMarkup(keyboard)
-
-    await query.message.reply_text(question, reply_markup=reply_markup)
+    await context.bot.send_photo(
+            chat_id,
+            photo=image,
+            caption=question,
+            reply_markup=reply_markup
+        )
 
     return COMMON_QUESTION_1
 
 async def handle_common_question_1(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     query = update.callback_query
+    chat_id = query.message.chat.id
     await query.answer()
     selected_answer = query.data
+    user_id = update.effective_user.id
+    # print("ANSWER", selected_answer)
+    if selected_answer == common_answers[0]:
+        try:
+            ostrovok.add_points(user_id, 1)
+        except:
+            print('there was an error adding the point')
+        # print("Correct")
+        # add point to the db
+    else:
+        pass
+        # print("Incorrect")
 
-    await query.edit_message_text(text=f"Your answer: {selected_answer}. Next question:")
+    question, options, image = common_questions[1]
+    await update.callback_query.edit_message_reply_markup(None)
+    await query.message.reply_text(f'{selected_answer}. Ответ засчитан, поехали дальше!')
 
-    await query.message.reply_text(common_questions[1])
+    keyboard = [[InlineKeyboardButton(option, callback_data=option) for option in options]]
+    reply_markup = InlineKeyboardMarkup(keyboard)
+
+    await context.bot.send_photo(
+            chat_id,
+            photo=image,
+            caption=question,
+            reply_markup=reply_markup
+        )
 
     return COMMON_QUESTION_2
 
 async def handle_common_question_2(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    answer = update.message.text
+    query = update.callback_query
+    chat_id = query.message.chat.id
+    await query.answer()
+    selected_answer = query.data
+    await update.callback_query.edit_message_reply_markup(None)
+    user_id = update.effective_user.id
+    if selected_answer == common_answers[1]:
+        try:
+            ostrovok.add_points(user_id, 1)
+        except:
+            print('there was an error adding the point')
+        # print("Correct")
+        # add point to the db
+    else:
+        pass
+        # print("Incorrect")
 
-    await update.message.reply_text(f"Ваш ответ: {answer}. Следующий вопрос:")
-
-    question, options = common_questions[2]
+    # print("ANSWER", selected_answer)
+    question, options, image = common_questions[2]
     keyboard = [[InlineKeyboardButton(option, callback_data=option) for option in options]]
     reply_markup = InlineKeyboardMarkup(keyboard)
-
-    await update.message.reply_text(question, reply_markup=reply_markup)
+    await context.bot.send_photo(
+            chat_id=chat_id,
+            photo=image,
+            caption=question,
+            reply_markup=reply_markup
+        )
 
     return COMMON_QUESTION_3
 
 async def handle_common_question_3(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    global QUESTION_INDEX
     query = update.callback_query
+    chat_id = query.message.chat.id
     await query.answer()
     selected_answer = query.data
-
-    await query.edit_message_text(text=f"Ваш ответ: {selected_answer}. Следующий вопрос:")
-
+    user_id = update.effective_user.id
+    # print("ANSWER", selected_answer)
+    if selected_answer == common_answers[2]:
+        try:
+            ostrovok.add_points(user_id, 1)
+        except:
+            print('there was an error adding the point')
+        # print("Correct")
+        # add point to the db
+    else:
+        pass
+        # print("Incorrect")
+    await query.message.reply_text(f'{selected_answer}. Ответ засчитан, поехали дальше!')
+    await update.callback_query.edit_message_reply_markup(None)
     favorite_language = context.user_data['favorite_language']
-    context.user_data['question_index'] = 0  # Reset for specific questions
+    context.user_data['question_index'] = 0
+    QUESTION_INDEX = 0
 
-    question, options = get_question_and_options(favorite_language, 0)
+    question, options, image = get_question_and_options(favorite_language, 0)
     keyboard = [[InlineKeyboardButton(option, callback_data=option) for option in options]]
     reply_markup = InlineKeyboardMarkup(keyboard)
 
-    await query.message.reply_text(question, reply_markup=reply_markup, parse_mode=ParseMode.MARKDOWN)
+    await context.bot.send_photo(
+                chat_id=chat_id,
+                photo=image,
+                caption=question,
+                reply_markup=reply_markup
+            )
+
+    # await query.message.reply_text(question, reply_markup=reply_markup, parse_mode=ParseMode.MARKDOWN)
 
     if favorite_language == 'python':
         return PYTHON_QUIZ
     elif favorite_language == 'golang':
         return GOLANG_QUIZ
 
+async def handle_python_q3(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    answer = update.message.text.lower().strip()
+    correct_answers = ["скобки", "скобочки", "brac", "braces", "parens", "parenthesis", "brackets"]
+    # print("ANSWER", answer)
+    user_id = update.effective_user.id
+    if any(correct in answer for correct in correct_answers):
+        try:
+            ostrovok.add_points(user_id, 1)
+        except:
+            print('there was an error adding the point')
+        # print("Correct")
+    else:
+        pass
+        # print("Incorrect")
+    return await continue_python_quiz(update, context)
+
+async def handle_golang_q3(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    answer = update.message.text.lower().strip()
+    correct_answers = ["body", "defer", "close", "дефер после ошибки"]
+    # print("ANSWER", answer)
+    if any(correct in answer for correct in correct_answers):
+        user_id = update.effective_user.id
+
+        try:
+            ostrovok.add_points(user_id, 1)
+        except:
+            print('there was an error adding the point')
+        # print("Correct")
+    else:
+        pass
+        # print("Incorrect")
+    return await continue_golang_quiz(update, context)
+
+async def continue_python_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    global QUESTION_INDEX
+    chat_id = update.message.chat.id
+    # question_index = context.user_data['question_index']
+    QUESTION_INDEX += 1
+    next_question_index = QUESTION_INDEX
+
+    question, options, image = get_question_and_options('python', next_question_index)
+    keyboard = [[InlineKeyboardButton(option, callback_data=option)] for option in options]
+    reply_markup = InlineKeyboardMarkup(keyboard)
+
+    await context.bot.send_photo(
+        chat_id,
+        photo=image,
+        caption=question,
+        reply_markup=reply_markup
+    )
+
+    return PYTHON_QUIZ
+
+async def continue_golang_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    global QUESTION_INDEX
+    chat_id = update.message.chat.id
+    # question_index = context.user_data['question_index']
+    QUESTION_INDEX += 1
+    next_question_index = QUESTION_INDEX
+
+    question, options, image = get_question_and_options('golang', next_question_index)
+    keyboard = [[InlineKeyboardButton(option, callback_data=option)] for option in options]
+    reply_markup = InlineKeyboardMarkup(keyboard)
+
+    await context.bot.send_photo(
+        chat_id,
+        photo=image,
+        caption=question,
+        reply_markup=reply_markup
+    )
+
+    return GOLANG_QUIZ
+
+
 async def handle_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    global QUESTION_INDEX
     query = update.callback_query
+    chat_id = update.callback_query.message.chat.id
     await query.answer()
+    await update.callback_query.edit_message_reply_markup(None)
+    user_id = update.effective_user.id
+    favorite_language = context.user_data['favorite_language']
+    # question_index = context.user_data['question_index']
     selected_answer = query.data
 
-    favorite_language = context.user_data['favorite_language']
-    question_index = context.user_data['question_index']
+    # Process the current question answer here if needed
+    if favorite_language == 'python':
+        if QUESTION_INDEX == 0 and selected_answer == python_answers[0]:  
+            try:
+                ostrovok.add_points(user_id, 1)
+            except:
+                print('there was an error adding the point')
+        if QUESTION_INDEX == 1 and selected_answer == python_answers[1]:
+  
+            try:
+                ostrovok.add_points(user_id, 1)
+            except:
+                print('there was an error adding the point')
+        if QUESTION_INDEX == 3 and selected_answer == python_answers[3]:
+            try:
+                ostrovok.add_points(user_id, 1)
+            except:
+                print('there was an error adding the point')
+    elif favorite_language == 'golang':
+        if QUESTION_INDEX == 0 and selected_answer == go_answers[0]:
+            try:
+                ostrovok.add_points(user_id, 1)
+            except:
+                print('there was an error adding the point')
+        if QUESTION_INDEX == 1 and selected_answer == go_answers[1]:
+            try:
+                ostrovok.add_points(user_id, 1)
+            except:
+                print('there was an error adding the point')
+        if QUESTION_INDEX == 3 and selected_answer == go_answers[3]:
+            try:
+                ostrovok.add_points(user_id, 1)
+            except:
+                print('there was an error adding the point')
+    print("ANSWER",selected_answer, QUESTION_INDEX)
+    # sent point and add if correct on server
+    if QUESTION_INDEX + 1 < len(python_questions if favorite_language == 'python' else golang_questions):
+        next_question_index = QUESTION_INDEX + 1
 
-    context.user_data['question_index'] += 1
+        # Handle the third question differently
+        if next_question_index == 2:
+            question, options, image = get_question_and_options(favorite_language, next_question_index)
+            await context.bot.send_photo(chat_id, photo=image, caption=question)
+            QUESTION_INDEX += 1
+            return PYTHON_Q3 if favorite_language == 'python' else GOLANG_Q3
+        else:
+            question, options, image = get_question_and_options(favorite_language, next_question_index)
+            keyboard = [[InlineKeyboardButton(option, callback_data=option)] for option in options]
+            reply_markup = InlineKeyboardMarkup(keyboard)
 
-    if question_index + 1 < len(python_questions if favorite_language == 'python' else golang_questions):
-        next_question_index = question_index + 1
-        question, options = get_question_and_options(favorite_language, next_question_index)
-        keyboard = [[InlineKeyboardButton(option, callback_data=option) for option in options]]
-        reply_markup = InlineKeyboardMarkup(keyboard)
+            await context.bot.send_photo(
+                chat_id,
+                photo=image,
+                caption=question,
+                reply_markup=reply_markup
+            )
 
-        await query.edit_message_text(text=f"Ваш ответ: {selected_answer}. Следующий вопрос:", parse_mode=ParseMode.MARKDOWN)
-        await query.message.reply_text(question, reply_markup=reply_markup, parse_mode=ParseMode.MARKDOWN)
+            QUESTION_INDEX += 1
 
-        return PYTHON_QUIZ if favorite_language == 'python' else GOLANG_QUIZ
+            return PYTHON_QUIZ if favorite_language == 'python' else GOLANG_QUIZ
     else:
-        await query.edit_message_text(text=final_answer)
+        keyboard = [
+            [InlineKeyboardButton("Получить код", callback_data='get_code')],
+        ]
+        reply_markup = InlineKeyboardMarkup(keyboard)
+        await context.bot.send_message(chat_id=chat_id, text="Конец викторины. Спасибо за участие!")
+        await context.bot.send_message(chat_id=chat_id, text="Если ты еще не принял участие в командном соревновании в игре geoguessr или забыл код", reply_markup=reply_markup)
         return ConversationHandler.END
+
+
+async def get_geoguessr_code(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    query = update.callback_query
+    chat_id = update.callback_query.message.chat.id
+    selected_answer = query.data
+    await query.answer()
+    user_id = update.effective_user.id
+    code = ''
+
+    if selected_answer == 'get_code':
+        try:
+            responce = requests.get(f"http://heyyouhere.space:1566/get_code?id={user_id}")
+            ans = responce.json()
+            code = ans['code']
+            await query.edit_message_text(f"Твой ключ `{code}`", parse_mode=ParseMode.MARKDOWN)
+        except:
+            print("error in creating geoguessr code")
+    # return ConversationHandler.END
 
 async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     await update.message.reply_text('Диалог отменен.')
@@ -342,20 +572,23 @@ def main() -> None:
             ASK_COMPANY: [MessageHandler(filters.TEXT & ~filters.COMMAND, ask_company)],
             ASK_POSITION: [MessageHandler(filters.TEXT & ~filters.COMMAND, ask_position)],
             ASK_EMAIL: [MessageHandler(filters.TEXT & ~filters.COMMAND, ask_email)],
-            CHOOSE_GAME: [CallbackQueryHandler(choose_game)],
             FAVORITE_LANGUAGE: [CallbackQueryHandler(favorite_language)],
+            CHOOSE_GAME: [CallbackQueryHandler(choose_game)],
             START_QUIZ: [CallbackQueryHandler(start_quiz)],
             COMMON_QUESTION_1: [CallbackQueryHandler(handle_common_question_1)],
-            COMMON_QUESTION_2: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_common_question_2)],
+            COMMON_QUESTION_2: [CallbackQueryHandler(handle_common_question_2)],
             COMMON_QUESTION_3: [CallbackQueryHandler(handle_common_question_3)],
             PYTHON_QUIZ: [CallbackQueryHandler(handle_quiz)],
             GOLANG_QUIZ: [CallbackQueryHandler(handle_quiz)],
+            PYTHON_Q3: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_python_q3)],
+            GOLANG_Q3: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_golang_q3)],
         },
-        fallbacks=[CommandHandler('cancel', cancel)],
+        fallbacks=[CallbackQueryHandler(get_geoguessr_code)],
     )
 
     application.add_handler(conv_handler)
     application.add_handler(CommandHandler("send_message", send_message))
+    application.add_handler(CallbackQueryHandler(get_geoguessr_code))
 
     application.run_polling()
 
