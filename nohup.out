@@ -1,0 +1,887 @@
+Traceback (most recent call last):
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 1, in <module>
+    from telegram import ForceReply, Update, InlineKeyboardButton, KeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove
+ModuleNotFoundError: No module named 'telegram'
+/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py:650: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_application.py", line 1264, in process_update
+    await coroutine
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 570, in get_geoguessr_code
+    await query.answer()
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_callbackquery.py", line 187, in answer
+    return await self.get_bot().answer_callback_query(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_extbot.py", line 900, in answer_callback_query
+    return await super().answer_callback_query(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 542, in decorator
+    result = await func(self, *args, **kwargs)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 3767, in answer_callback_query
+    return await self._post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 630, in _post
+    return await self._do_post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_extbot.py", line 347, in _do_post
+    return await super()._do_post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 658, in _do_post
+    return await request.post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/request/_baserequest.py", line 200, in post
+    result = await self._request_wrapper(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/request/_baserequest.py", line 379, in _request_wrapper
+    raise BadRequest(message)
+telegram.error.BadRequest: Query is too old and response timeout expired or query id is invalid
+No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_application.py", line 1264, in process_update
+    await coroutine
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 570, in get_geoguessr_code
+    await query.answer()
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_callbackquery.py", line 187, in answer
+    return await self.get_bot().answer_callback_query(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_extbot.py", line 900, in answer_callback_query
+    return await super().answer_callback_query(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 542, in decorator
+    result = await func(self, *args, **kwargs)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 3767, in answer_callback_query
+    return await self._post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 630, in _post
+    return await self._do_post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_extbot.py", line 347, in _do_post
+    return await super()._do_post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 658, in _do_post
+    return await request.post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/request/_baserequest.py", line 200, in post
+    result = await self._request_wrapper(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/request/_baserequest.py", line 379, in _request_wrapper
+    raise BadRequest(message)
+telegram.error.BadRequest: Query is too old and response timeout expired or query id is invalid
+No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_application.py", line 1264, in process_update
+    await coroutine
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 570, in get_geoguessr_code
+    await query.answer()
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_callbackquery.py", line 187, in answer
+    return await self.get_bot().answer_callback_query(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_extbot.py", line 900, in answer_callback_query
+    return await super().answer_callback_query(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 542, in decorator
+    result = await func(self, *args, **kwargs)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 3767, in answer_callback_query
+    return await self._post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 630, in _post
+    return await self._do_post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_extbot.py", line 347, in _do_post
+    return await super()._do_post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 658, in _do_post
+    return await request.post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/request/_baserequest.py", line 200, in post
+    result = await self._request_wrapper(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/request/_baserequest.py", line 379, in _request_wrapper
+    raise BadRequest(message)
+telegram.error.BadRequest: Query is too old and response timeout expired or query id is invalid
+No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_application.py", line 1264, in process_update
+    await coroutine
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 570, in get_geoguessr_code
+    await query.answer()
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_callbackquery.py", line 187, in answer
+    return await self.get_bot().answer_callback_query(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_extbot.py", line 900, in answer_callback_query
+    return await super().answer_callback_query(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 542, in decorator
+    result = await func(self, *args, **kwargs)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 3767, in answer_callback_query
+    return await self._post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 630, in _post
+    return await self._do_post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_extbot.py", line 347, in _do_post
+    return await super()._do_post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 658, in _do_post
+    return await request.post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/request/_baserequest.py", line 200, in post
+    result = await self._request_wrapper(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/request/_baserequest.py", line 379, in _request_wrapper
+    raise BadRequest(message)
+telegram.error.BadRequest: Query is too old and response timeout expired or query id is invalid
+No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_application.py", line 1264, in process_update
+    await coroutine
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 570, in get_geoguessr_code
+    await query.answer()
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_callbackquery.py", line 187, in answer
+    return await self.get_bot().answer_callback_query(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_extbot.py", line 900, in answer_callback_query
+    return await super().answer_callback_query(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 542, in decorator
+    result = await func(self, *args, **kwargs)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 3767, in answer_callback_query
+    return await self._post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 630, in _post
+    return await self._do_post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_extbot.py", line 347, in _do_post
+    return await super()._do_post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 658, in _do_post
+    return await request.post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/request/_baserequest.py", line 200, in post
+    result = await self._request_wrapper(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/request/_baserequest.py", line 379, in _request_wrapper
+    raise BadRequest(message)
+telegram.error.BadRequest: Query is too old and response timeout expired or query id is invalid
+No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_application.py", line 1264, in process_update
+    await coroutine
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 570, in get_geoguessr_code
+    await query.answer()
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_callbackquery.py", line 187, in answer
+    return await self.get_bot().answer_callback_query(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_extbot.py", line 900, in answer_callback_query
+    return await super().answer_callback_query(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 542, in decorator
+    result = await func(self, *args, **kwargs)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 3767, in answer_callback_query
+    return await self._post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 630, in _post
+    return await self._do_post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_extbot.py", line 347, in _do_post
+    return await super()._do_post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 658, in _do_post
+    return await request.post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/request/_baserequest.py", line 200, in post
+    result = await self._request_wrapper(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/request/_baserequest.py", line 379, in _request_wrapper
+    raise BadRequest(message)
+telegram.error.BadRequest: Query is too old and response timeout expired or query id is invalid
+No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_application.py", line 1264, in process_update
+    await coroutine
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 570, in get_geoguessr_code
+    await query.answer()
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_callbackquery.py", line 187, in answer
+    return await self.get_bot().answer_callback_query(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_extbot.py", line 900, in answer_callback_query
+    return await super().answer_callback_query(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 542, in decorator
+    result = await func(self, *args, **kwargs)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 3767, in answer_callback_query
+    return await self._post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 630, in _post
+    return await self._do_post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_extbot.py", line 347, in _do_post
+    return await super()._do_post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 658, in _do_post
+    return await request.post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/request/_baserequest.py", line 200, in post
+    result = await self._request_wrapper(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/request/_baserequest.py", line 379, in _request_wrapper
+    raise BadRequest(message)
+telegram.error.BadRequest: Query is too old and response timeout expired or query id is invalid
+No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_application.py", line 1264, in process_update
+    await coroutine
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 570, in get_geoguessr_code
+    await query.answer()
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_callbackquery.py", line 187, in answer
+    return await self.get_bot().answer_callback_query(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_extbot.py", line 900, in answer_callback_query
+    return await super().answer_callback_query(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 542, in decorator
+    result = await func(self, *args, **kwargs)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 3767, in answer_callback_query
+    return await self._post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 630, in _post
+    return await self._do_post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_extbot.py", line 347, in _do_post
+    return await super()._do_post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 658, in _do_post
+    return await request.post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/request/_baserequest.py", line 200, in post
+    result = await self._request_wrapper(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/request/_baserequest.py", line 379, in _request_wrapper
+    raise BadRequest(message)
+telegram.error.BadRequest: Query is too old and response timeout expired or query id is invalid
+No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_application.py", line 1264, in process_update
+    await coroutine
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 570, in get_geoguessr_code
+    await query.answer()
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_callbackquery.py", line 187, in answer
+    return await self.get_bot().answer_callback_query(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_extbot.py", line 900, in answer_callback_query
+    return await super().answer_callback_query(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 542, in decorator
+    result = await func(self, *args, **kwargs)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 3767, in answer_callback_query
+    return await self._post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 630, in _post
+    return await self._do_post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_extbot.py", line 347, in _do_post
+    return await super()._do_post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 658, in _do_post
+    return await request.post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/request/_baserequest.py", line 200, in post
+    result = await self._request_wrapper(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/request/_baserequest.py", line 379, in _request_wrapper
+    raise BadRequest(message)
+telegram.error.BadRequest: Query is too old and response timeout expired or query id is invalid
+No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_application.py", line 1264, in process_update
+    await coroutine
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 570, in get_geoguessr_code
+    await query.answer()
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_callbackquery.py", line 187, in answer
+    return await self.get_bot().answer_callback_query(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_extbot.py", line 900, in answer_callback_query
+    return await super().answer_callback_query(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 542, in decorator
+    result = await func(self, *args, **kwargs)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 3767, in answer_callback_query
+    return await self._post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 630, in _post
+    return await self._do_post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_extbot.py", line 347, in _do_post
+    return await super()._do_post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 658, in _do_post
+    return await request.post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/request/_baserequest.py", line 200, in post
+    result = await self._request_wrapper(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/request/_baserequest.py", line 379, in _request_wrapper
+    raise BadRequest(message)
+telegram.error.BadRequest: Query is too old and response timeout expired or query id is invalid
+No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_application.py", line 1264, in process_update
+    await coroutine
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 570, in get_geoguessr_code
+    await query.answer()
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_callbackquery.py", line 187, in answer
+    return await self.get_bot().answer_callback_query(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_extbot.py", line 900, in answer_callback_query
+    return await super().answer_callback_query(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 542, in decorator
+    result = await func(self, *args, **kwargs)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 3767, in answer_callback_query
+    return await self._post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 630, in _post
+    return await self._do_post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_extbot.py", line 347, in _do_post
+    return await super()._do_post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 658, in _do_post
+    return await request.post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/request/_baserequest.py", line 200, in post
+    result = await self._request_wrapper(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/request/_baserequest.py", line 379, in _request_wrapper
+    raise BadRequest(message)
+telegram.error.BadRequest: Query is too old and response timeout expired or query id is invalid
+No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_application.py", line 1264, in process_update
+    await coroutine
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 570, in get_geoguessr_code
+    await query.answer()
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_callbackquery.py", line 187, in answer
+    return await self.get_bot().answer_callback_query(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_extbot.py", line 900, in answer_callback_query
+    return await super().answer_callback_query(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 542, in decorator
+    result = await func(self, *args, **kwargs)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 3767, in answer_callback_query
+    return await self._post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 630, in _post
+    return await self._do_post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_extbot.py", line 347, in _do_post
+    return await super()._do_post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 658, in _do_post
+    return await request.post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/request/_baserequest.py", line 200, in post
+    result = await self._request_wrapper(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/request/_baserequest.py", line 379, in _request_wrapper
+    raise BadRequest(message)
+telegram.error.BadRequest: Query is too old and response timeout expired or query id is invalid
+No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_application.py", line 1264, in process_update
+    await coroutine
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 570, in get_geoguessr_code
+    await query.answer()
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_callbackquery.py", line 187, in answer
+    return await self.get_bot().answer_callback_query(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_extbot.py", line 900, in answer_callback_query
+    return await super().answer_callback_query(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 542, in decorator
+    result = await func(self, *args, **kwargs)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 3767, in answer_callback_query
+    return await self._post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 630, in _post
+    return await self._do_post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_extbot.py", line 347, in _do_post
+    return await super()._do_post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 658, in _do_post
+    return await request.post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/request/_baserequest.py", line 200, in post
+    result = await self._request_wrapper(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/request/_baserequest.py", line 379, in _request_wrapper
+    raise BadRequest(message)
+telegram.error.BadRequest: Query is too old and response timeout expired or query id is invalid
+No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_application.py", line 1264, in process_update
+    await coroutine
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 570, in get_geoguessr_code
+    await query.answer()
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_callbackquery.py", line 187, in answer
+    return await self.get_bot().answer_callback_query(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_extbot.py", line 900, in answer_callback_query
+    return await super().answer_callback_query(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 542, in decorator
+    result = await func(self, *args, **kwargs)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 3767, in answer_callback_query
+    return await self._post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 630, in _post
+    return await self._do_post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_extbot.py", line 347, in _do_post
+    return await super()._do_post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 658, in _do_post
+    return await request.post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/request/_baserequest.py", line 200, in post
+    result = await self._request_wrapper(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/request/_baserequest.py", line 379, in _request_wrapper
+    raise BadRequest(message)
+telegram.error.BadRequest: Query is too old and response timeout expired or query id is invalid
+No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_application.py", line 1264, in process_update
+    await coroutine
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 570, in get_geoguessr_code
+    await query.answer()
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_callbackquery.py", line 187, in answer
+    return await self.get_bot().answer_callback_query(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_extbot.py", line 900, in answer_callback_query
+    return await super().answer_callback_query(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 542, in decorator
+    result = await func(self, *args, **kwargs)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 3767, in answer_callback_query
+    return await self._post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 630, in _post
+    return await self._do_post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_extbot.py", line 347, in _do_post
+    return await super()._do_post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 658, in _do_post
+    return await request.post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/request/_baserequest.py", line 200, in post
+    result = await self._request_wrapper(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/request/_baserequest.py", line 379, in _request_wrapper
+    raise BadRequest(message)
+telegram.error.BadRequest: Query is too old and response timeout expired or query id is invalid
+/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py:650: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+Traceback (most recent call last):
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/anyio/_core/_tasks.py", line 115, in fail_after
+    yield cancel_scope
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/httpcore/_backends/anyio.py", line 114, in connect_tcp
+    stream: anyio.abc.ByteStream = await anyio.connect_tcp(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/anyio/_core/_sockets.py", line 219, in connect_tcp
+    async with create_task_group() as tg:
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/anyio/_backends/_asyncio.py", line 688, in __aexit__
+    raise cancelled_exc_while_waiting_tasks
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/anyio/_backends/_asyncio.py", line 668, in __aexit__
+    await asyncio.wait(self._tasks)
+  File "/usr/lib/python3.10/asyncio/tasks.py", line 384, in wait
+    return await _wait(fs, timeout, return_when, loop)
+  File "/usr/lib/python3.10/asyncio/tasks.py", line 491, in _wait
+    await waiter
+asyncio.exceptions.CancelledError: Cancelled by cancel scope 7fe8c22e2050
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/httpcore/_exceptions.py", line 10, in map_exceptions
+    yield
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/httpcore/_backends/anyio.py", line 113, in connect_tcp
+    with anyio.fail_after(timeout):
+  File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/anyio/_core/_tasks.py", line 118, in fail_after
+    raise TimeoutError
+TimeoutError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/httpx/_transports/default.py", line 67, in map_httpcore_exceptions
+    yield
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/httpx/_transports/default.py", line 371, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/httpcore/_async/connection_pool.py", line 268, in handle_async_request
+    raise exc
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/httpcore/_async/connection_pool.py", line 251, in handle_async_request
+    response = await connection.handle_async_request(request)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/httpcore/_async/connection.py", line 99, in handle_async_request
+    raise exc
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/httpcore/_async/connection.py", line 76, in handle_async_request
+    stream = await self._connect(request)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/httpcore/_async/connection.py", line 124, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/httpcore/_backends/auto.py", line 30, in connect_tcp
+    return await self._backend.connect_tcp(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/httpcore/_backends/anyio.py", line 112, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectTimeout
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/request/_httpxrequest.py", line 268, in do_request
+    res = await self._client.request(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/httpx/_client.py", line 1559, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/httpx/_client.py", line 1646, in send
+    response = await self._send_handling_auth(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/httpx/_client.py", line 1674, in _send_handling_auth
+    response = await self._send_handling_redirects(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/httpx/_client.py", line 1711, in _send_handling_redirects
+    response = await self._send_single_request(request)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/httpx/_client.py", line 1748, in _send_single_request
+    response = await transport.handle_async_request(request)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/httpx/_transports/default.py", line 370, in handle_async_request
+    with map_httpcore_exceptions():
+  File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/httpx/_transports/default.py", line 84, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectTimeout
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 681, in <module>
+    main()
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 678, in main
+    application.run_polling()
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_application.py", line 836, in run_polling
+    return self.__run(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_application.py", line 1036, in __run
+    raise exc
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_application.py", line 1025, in __run
+    loop.run_until_complete(self.initialize())
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_application.py", line 495, in initialize
+    await self.bot.initialize()
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_extbot.py", line 293, in initialize
+    await super().initialize()
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 768, in initialize
+    await self.get_me()
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_extbot.py", line 1873, in get_me
+    return await super().get_me(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 542, in decorator
+    result = await func(self, *args, **kwargs)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 903, in get_me
+    result = await self._post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 630, in _post
+    return await self._do_post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_extbot.py", line 347, in _do_post
+    return await super()._do_post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 658, in _do_post
+    return await request.post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/request/_baserequest.py", line 200, in post
+    result = await self._request_wrapper(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/request/_baserequest.py", line 340, in _request_wrapper
+    raise exc
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/request/_baserequest.py", line 330, in _request_wrapper
+    code, payload = await self.do_request(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/request/_httpxrequest.py", line 285, in do_request
+    raise TimedOut from err
+telegram.error.TimedOut: Timed out
+/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py:650: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_application.py", line 1264, in process_update
+    await coroutine
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 570, in get_geoguessr_code
+    await query.answer()
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_callbackquery.py", line 187, in answer
+    return await self.get_bot().answer_callback_query(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_extbot.py", line 900, in answer_callback_query
+    return await super().answer_callback_query(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 542, in decorator
+    result = await func(self, *args, **kwargs)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 3767, in answer_callback_query
+    return await self._post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 630, in _post
+    return await self._do_post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_extbot.py", line 347, in _do_post
+    return await super()._do_post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 658, in _do_post
+    return await request.post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/request/_baserequest.py", line 200, in post
+    result = await self._request_wrapper(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/request/_baserequest.py", line 379, in _request_wrapper
+    raise BadRequest(message)
+telegram.error.BadRequest: Query is too old and response timeout expired or query id is invalid
+No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_application.py", line 1264, in process_update
+    await coroutine
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 570, in get_geoguessr_code
+    await query.answer()
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_callbackquery.py", line 187, in answer
+    return await self.get_bot().answer_callback_query(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_extbot.py", line 900, in answer_callback_query
+    return await super().answer_callback_query(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 542, in decorator
+    result = await func(self, *args, **kwargs)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 3767, in answer_callback_query
+    return await self._post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 630, in _post
+    return await self._do_post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_extbot.py", line 347, in _do_post
+    return await super()._do_post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 658, in _do_post
+    return await request.post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/request/_baserequest.py", line 200, in post
+    result = await self._request_wrapper(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/request/_baserequest.py", line 379, in _request_wrapper
+    raise BadRequest(message)
+telegram.error.BadRequest: Query is too old and response timeout expired or query id is invalid
+/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py:650: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py:650: PTBUserWarning: If 'per_message=False', 'CallbackQueryHandler' will not be tracked for every message. Read this FAQ entry to learn more about the per_* settings: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#what-do-the-per_-settings-in-conversationhandler-do.
+  conv_handler = ConversationHandler(
+No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_application.py", line 1264, in process_update
+    await coroutine
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_handlers/conversationhandler.py", line 857, in handle_update
+    new_state: object = await handler.handle_update(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 422, in handle_golang_q3
+    return await continue_golang_quiz(update, context)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 451, in continue_golang_quiz
+    question, options, image = get_question_and_options('golang', next_question_index)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 74, in get_question_and_options
+    question, options, image = golang_questions[question_index]
+IndexError: list index out of range
+No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_application.py", line 1264, in process_update
+    await coroutine
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_handlers/conversationhandler.py", line 857, in handle_update
+    new_state: object = await handler.handle_update(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 422, in handle_golang_q3
+    return await continue_golang_quiz(update, context)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 451, in continue_golang_quiz
+    question, options, image = get_question_and_options('golang', next_question_index)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 74, in get_question_and_options
+    question, options, image = golang_questions[question_index]
+IndexError: list index out of range
+No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_application.py", line 1264, in process_update
+    await coroutine
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_handlers/conversationhandler.py", line 857, in handle_update
+    new_state: object = await handler.handle_update(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 422, in handle_golang_q3
+    return await continue_golang_quiz(update, context)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 451, in continue_golang_quiz
+    question, options, image = get_question_and_options('golang', next_question_index)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 74, in get_question_and_options
+    question, options, image = golang_questions[question_index]
+IndexError: list index out of range
+No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_application.py", line 1264, in process_update
+    await coroutine
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_handlers/conversationhandler.py", line 857, in handle_update
+    new_state: object = await handler.handle_update(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 422, in handle_golang_q3
+    return await continue_golang_quiz(update, context)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 451, in continue_golang_quiz
+    question, options, image = get_question_and_options('golang', next_question_index)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 74, in get_question_and_options
+    question, options, image = golang_questions[question_index]
+IndexError: list index out of range
+No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_application.py", line 1264, in process_update
+    await coroutine
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_handlers/conversationhandler.py", line 857, in handle_update
+    new_state: object = await handler.handle_update(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 422, in handle_golang_q3
+    return await continue_golang_quiz(update, context)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 451, in continue_golang_quiz
+    question, options, image = get_question_and_options('golang', next_question_index)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 74, in get_question_and_options
+    question, options, image = golang_questions[question_index]
+IndexError: list index out of range
+No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_application.py", line 1264, in process_update
+    await coroutine
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_handlers/conversationhandler.py", line 857, in handle_update
+    new_state: object = await handler.handle_update(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 422, in handle_golang_q3
+    return await continue_golang_quiz(update, context)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 451, in continue_golang_quiz
+    question, options, image = get_question_and_options('golang', next_question_index)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 74, in get_question_and_options
+    question, options, image = golang_questions[question_index]
+IndexError: list index out of range
+No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_application.py", line 1264, in process_update
+    await coroutine
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_handlers/conversationhandler.py", line 857, in handle_update
+    new_state: object = await handler.handle_update(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 422, in handle_golang_q3
+    return await continue_golang_quiz(update, context)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 451, in continue_golang_quiz
+    question, options, image = get_question_and_options('golang', next_question_index)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 74, in get_question_and_options
+    question, options, image = golang_questions[question_index]
+IndexError: list index out of range
+No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_application.py", line 1264, in process_update
+    await coroutine
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_handlers/conversationhandler.py", line 857, in handle_update
+    new_state: object = await handler.handle_update(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 422, in handle_golang_q3
+    return await continue_golang_quiz(update, context)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 451, in continue_golang_quiz
+    question, options, image = get_question_and_options('golang', next_question_index)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 74, in get_question_and_options
+    question, options, image = golang_questions[question_index]
+IndexError: list index out of range
+No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_application.py", line 1264, in process_update
+    await coroutine
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_handlers/conversationhandler.py", line 857, in handle_update
+    new_state: object = await handler.handle_update(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 366, in handle_common_question_3
+    await update.callback_query.edit_message_reply_markup(None)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_callbackquery.py", line 389, in edit_message_reply_markup
+    return await self._get_message().edit_reply_markup(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_message.py", line 3571, in edit_reply_markup
+    return await self.get_bot().edit_message_reply_markup(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_extbot.py", line 1587, in edit_message_reply_markup
+    return await super().edit_message_reply_markup(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 542, in decorator
+    result = await func(self, *args, **kwargs)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 4060, in edit_message_reply_markup
+    return await self._send_message(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_extbot.py", line 581, in _send_message
+    result = await super()._send_message(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 736, in _send_message
+    result = await self._post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 630, in _post
+    return await self._do_post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_extbot.py", line 347, in _do_post
+    return await super()._do_post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 658, in _do_post
+    return await request.post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/request/_baserequest.py", line 200, in post
+    result = await self._request_wrapper(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/request/_baserequest.py", line 379, in _request_wrapper
+    raise BadRequest(message)
+telegram.error.BadRequest: Message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+
+
+
+
+
+
+
+No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/anyio/_core/_tasks.py", line 115, in fail_after
+    yield cancel_scope
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/httpcore/_backends/anyio.py", line 114, in connect_tcp
+    stream: anyio.abc.ByteStream = await anyio.connect_tcp(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/anyio/_core/_sockets.py", line 219, in connect_tcp
+    async with create_task_group() as tg:
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/anyio/_backends/_asyncio.py", line 688, in __aexit__
+    raise cancelled_exc_while_waiting_tasks
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/anyio/_backends/_asyncio.py", line 668, in __aexit__
+    await asyncio.wait(self._tasks)
+  File "/usr/lib/python3.10/asyncio/tasks.py", line 384, in wait
+    return await _wait(fs, timeout, return_when, loop)
+  File "/usr/lib/python3.10/asyncio/tasks.py", line 491, in _wait
+    await waiter
+asyncio.exceptions.CancelledError: Cancelled by cancel scope 7f07bca2ebf0
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/httpcore/_exceptions.py", line 10, in map_exceptions
+    yield
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/httpcore/_backends/anyio.py", line 113, in connect_tcp
+    with anyio.fail_after(timeout):
+  File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/anyio/_core/_tasks.py", line 118, in fail_after
+    raise TimeoutError
+TimeoutError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/httpx/_transports/default.py", line 67, in map_httpcore_exceptions
+    yield
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/httpx/_transports/default.py", line 371, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/httpcore/_async/connection_pool.py", line 268, in handle_async_request
+    raise exc
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/httpcore/_async/connection_pool.py", line 251, in handle_async_request
+    response = await connection.handle_async_request(request)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/httpcore/_async/connection.py", line 99, in handle_async_request
+    raise exc
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/httpcore/_async/connection.py", line 76, in handle_async_request
+    stream = await self._connect(request)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/httpcore/_async/connection.py", line 124, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/httpcore/_backends/auto.py", line 30, in connect_tcp
+    return await self._backend.connect_tcp(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/httpcore/_backends/anyio.py", line 112, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectTimeout
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/request/_httpxrequest.py", line 268, in do_request
+    res = await self._client.request(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/httpx/_client.py", line 1559, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/httpx/_client.py", line 1646, in send
+    response = await self._send_handling_auth(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/httpx/_client.py", line 1674, in _send_handling_auth
+    response = await self._send_handling_redirects(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/httpx/_client.py", line 1711, in _send_handling_redirects
+    response = await self._send_single_request(request)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/httpx/_client.py", line 1748, in _send_single_request
+    response = await transport.handle_async_request(request)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/httpx/_transports/default.py", line 370, in handle_async_request
+    with map_httpcore_exceptions():
+  File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/httpx/_transports/default.py", line 84, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectTimeout
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_application.py", line 1264, in process_update
+    await coroutine
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_handlers/conversationhandler.py", line 857, in handle_update
+    new_state: object = await handler.handle_update(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 112, in agreement
+    await query.answer()
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_callbackquery.py", line 187, in answer
+    return await self.get_bot().answer_callback_query(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_extbot.py", line 900, in answer_callback_query
+    return await super().answer_callback_query(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 542, in decorator
+    result = await func(self, *args, **kwargs)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 3767, in answer_callback_query
+    return await self._post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 630, in _post
+    return await self._do_post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_extbot.py", line 347, in _do_post
+    return await super()._do_post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/_bot.py", line 658, in _do_post
+    return await request.post(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/request/_baserequest.py", line 200, in post
+    result = await self._request_wrapper(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/request/_baserequest.py", line 340, in _request_wrapper
+    raise exc
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/request/_baserequest.py", line 330, in _request_wrapper
+    code, payload = await self.do_request(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/request/_httpxrequest.py", line 285, in do_request
+    raise TimedOut from err
+telegram.error.TimedOut: Timed out
+No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_application.py", line 1264, in process_update
+    await coroutine
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_handlers/conversationhandler.py", line 857, in handle_update
+    new_state: object = await handler.handle_update(
+  File "/home/larannma/work/ostrovok_geoguessr_battle/venv/lib/python3.10/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 404, in handle_python_q3
+    return await continue_python_quiz(update, context)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 431, in continue_python_quiz
+    question, options, image = get_question_and_options('python', next_question_index)
+  File "/home/larannma/work/ostrovok_geoguessr_battle/telegram_bot.py", line 72, in get_question_and_options
+    question, options, image = python_questions[question_index]
+IndexError: list index out of range
